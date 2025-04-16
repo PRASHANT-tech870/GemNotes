@@ -64,7 +64,7 @@ const Login = () => {
       formData.append('username', username);
       formData.append('password', password);
 
-      const response = await fetch('http://localhost:8000/auth/token', {
+      const response = await fetch('https://gemnotes-fastapi-backend-production.up.railway.app/auth/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -88,7 +88,7 @@ const Login = () => {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       // Send the Google ID token to your backend for verification
-      const response = await fetch('http://localhost:8000/auth/google', {
+      const response = await fetch('https://gemnotes-fastapi-backend-production.up.railway.app/auth/google', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/auth/', {
+      const response = await fetch('https://gemnotes-fastapi-backend-production.up.railway.app/auth/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ const Signup = () => {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       // Send the Google ID token to your backend for verification and signup
-      const response = await fetch('http://localhost:8000/auth/google-signup', {
+      const response = await fetch('https://gemnotes-fastapi-backend-production.up.railway.app/auth/google-signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -281,7 +281,7 @@ const Dashboard = () => {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8000/notes/', {
+      const response = await fetch('https://gemnotes-fastapi-backend-production.up.railway.app/notes/', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -305,7 +305,7 @@ const Dashboard = () => {
     if (!newNoteTitle.trim()) return;
 
     try {
-      const response = await fetch('http://localhost:8000/notes/', {
+      const response = await fetch('https://gemnotes-fastapi-backend-production.up.railway.app/notes/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -419,7 +419,7 @@ const NoteDetail = () => {
   const fetchNoteDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:8000/notes/${noteId}`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/notes/${noteId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -445,7 +445,7 @@ const NoteDetail = () => {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch(`http://localhost:8000/notes/${noteId}/bullet-points`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/notes/${noteId}/bullet-points`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -479,7 +479,7 @@ const NoteDetail = () => {
   const handleToggleBulletPoint = async (bulletId, completed) => {
     try {
       const bulletPoint = note.bullet_points.find(bp => bp.id === bulletId);
-      const response = await fetch(`http://localhost:8000/notes/${noteId}/bullet-points/${bulletId}`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/notes/${noteId}/bullet-points/${bulletId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -509,7 +509,7 @@ const NoteDetail = () => {
 
   const handleDeleteBulletPoint = async (bulletId) => {
     try {
-      const response = await fetch(`http://localhost:8000/notes/${noteId}/bullet-points/${bulletId}`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/notes/${noteId}/bullet-points/${bulletId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -531,7 +531,7 @@ const NoteDetail = () => {
 
   const handleSaveNote = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/notes/${noteId}`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/notes/${noteId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -561,7 +561,7 @@ const NoteDetail = () => {
     if (!window.confirm("Are you sure you want to delete this note?")) return;
     
     try {
-      const response = await fetch(`http://localhost:8000/notes/${noteId}`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/notes/${noteId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -589,7 +589,7 @@ const NoteDetail = () => {
 
     try {
       const bulletPoint = note.bullet_points.find(bp => bp.id === editingBulletId);
-      const response = await fetch(`http://localhost:8000/notes/${noteId}/bullet-points/${editingBulletId}`, {
+      const response = await fetch(`https://gemnotes-fastapi-backend-production.up.railway.app/${noteId}/bullet-points/${editingBulletId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
