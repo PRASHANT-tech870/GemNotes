@@ -6,29 +6,108 @@
   box-sizing: border-box;
 }
 
+:root[data-theme="light"] {
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --card-background: #fff;
+  --border-color: #ddd;
+  --primary-color: #4a6fa5;
+  --secondary-color: #6d98d3;
+  --accent-color: #f0a04b;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] {
+  --background-color: #1a1a1a;
+  --text-color: #f5f5f5;
+  --card-background: #2d2d2d;
+  --border-color: #444;
+  --primary-color: #6d98d3;
+  --secondary-color: #4a6fa5;
+  --accent-color: #f0a04b;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 body {
-  font-family: 'Inter', sans-serif;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f5f5;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
-button {
-  cursor: pointer;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Basic styling for cards, buttons, etc. */
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+}
+
+button, .btn {
+  background-color: var(--primary-color);
+  color: white;
   border: none;
-  outline: none;
-}
-
-input {
-  border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 8px 12px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-input:focus {
-  border-color: #2563eb;
+button:hover, .btn:hover {
+  background-color: var(--secondary-color);
+}
+
+input, textarea {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+/* Theme toggle styling */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.toggle-track {
+  position: relative;
+  width: 50px;
+  height: 24px;
+  background-color: #888;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dark .toggle-track {
+  background-color: var(--primary-color);
+}
+
+.dark .toggle-thumb {
+  transform: translateX(26px);
 }
